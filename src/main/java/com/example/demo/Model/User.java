@@ -38,8 +38,8 @@ public class User implements UserDetails {
 
 	
 	
-//	@Enumerated(EnumType.STRING)
-//	private Role role;
+	@Enumerated(EnumType.STRING)
+	private Role role;
 	
 	
 	
@@ -56,8 +56,8 @@ public class User implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-//		return List.of(new SimpleGrantedAuthority(role.name()));
-		return null;
+		return List.of(new SimpleGrantedAuthority(role.name()));
+		//return null;
 	}
 
 	@Override

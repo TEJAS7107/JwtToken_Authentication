@@ -39,11 +39,11 @@ public class SecurityConfigration{
 //			.addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class);
 //		
 //		return http.build();
-		return http.csrf().disable().cors().disable().authorizeHttpRequests((authorize) -> authorize.requestMatchers("/api/v1/auth/register").permitAll()
+		return http.csrf().disable().cors().disable().authorizeHttpRequests((authorize) -> authorize.requestMatchers("/api/v1/auth/register","/api/v1/auth/authenticate").permitAll()
 				.requestMatchers("api/**").authenticated()
 				
 				
-				).formLogin().and().authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+				).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
 		
 	}
